@@ -24,33 +24,11 @@ class MyNavigationDrawer extends StatelessWidget {
     return Material(
       color: Colors.red[50],
       child: InkWell(
-        onTap: () {
-          drawerProvider.changeSelectedDrawerScreen('Profil');
-
-          // drawerProvider.navigateToPage(0);
-          Navigator.pop(context);
-        },
         child: Container(
           padding: EdgeInsets.only(
               top: 20 + MediaQuery.of(context).padding.top, bottom: 20),
-          child: const Column(
-            children: [
-              CircleAvatar(
-                radius: 52,
-                backgroundColor: Colors.white60,
-              ),
-              SizedBox(
-                height: 12,
-              ),
-              Text(
-                'Max Mustermann',
-                style: TextStyle(fontSize: 24, color: Colors.white),
-              ),
-              Text(
-                'max@mustermann.de',
-                style: TextStyle(fontSize: 12, color: Colors.white),
-              ),
-            ],
+          child: Center(
+            child: Image.asset('lib/assets/images/logo_black.png', fit: BoxFit.fitWidth, width: 100),
           ),
         ),
       ),

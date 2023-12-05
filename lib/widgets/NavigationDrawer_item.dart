@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -36,7 +34,7 @@ class _NavigationDrawerItemState extends State<NavigationDrawerItem> {
           borderRadius: BorderRadius.circular(100),
         ),
         selected: (selectedTile == widget.title.data) ? true : false,
-        selectedTileColor: Theme.of(context).colorScheme.primary,
+        selectedTileColor: Theme.of(context).colorScheme.secondary,
         selectedColor: Colors.white,
         leading: widget.icon,
         title: widget.title,
