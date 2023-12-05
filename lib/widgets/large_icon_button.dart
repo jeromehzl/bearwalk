@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-
 import '../utils/ColorHelper.dart';
 
 class MyLargeIconButton extends StatelessWidget {
-  final String text; // Parameter für den Button-Text
-  final IconData icon; // Parameter für das Icon
+  final String text;
+  final IconData icon;
   final VoidCallback onPressed;
+  final Size? size; // Optionaler Parameter für die Größe
 
-  // Konstruktor, der den Text und das Icon von außen entgegennimmt
   const MyLargeIconButton({
     super.key,
     required this.text,
     required this.icon,
     required this.onPressed,
+    this.size, // Optionaler Parameter im Konstruktor
   });
 
   @override
@@ -28,21 +28,29 @@ class MyLargeIconButton extends StatelessWidget {
         elevation: 5,
       ),
       onPressed: onPressed,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          Text(
-            text,
-            style: const TextStyle(
-              fontSize: 16,
-            ),
+      child: ConstrainedBox(
+        constraints: BoxConstraints(
+          minWidth: size?.width ?? 0, // Mindestbreite auf 0 setzen, wenn keine Größe angegeben wird
+          minHeight: size?.height ?? 0, // Mindesthöhe auf 0 setzen, wenn keine Größe angegeben wird
+        ),
+        child: IntrinsicWidth( // Stellt sicher, dass der Button nicht breiter als nötig ist
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Text(
+                text,
+                style: const TextStyle(
+                  fontSize: 16,
+                ),
+              ),
+              const SizedBox(height: 8),
+              Icon(
+                icon,
+                size: 24,
+              ),
+            ],
           ),
-          const SizedBox(height: 8),
-          Icon(
-            icon,
-            size: 24,
-          ),
-        ],
+        ),
       ),
     );
   }

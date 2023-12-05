@@ -1,6 +1,7 @@
 import 'package:bearwalk/utils/ColorHelper.dart';
-import 'package:bearwalk/utils/my_snackbars.dart';
+import 'package:bearwalk/widgets/my_snackbars.dart';
 import 'package:bearwalk/widgets/large_icon_button.dart';
+import 'package:bearwalk/widgets/navigation_drawer.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -18,6 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: ColorHelper.inversePrimary(context),
         title: const Text('Home Screen'),
       ),
+      drawer: const MyNavigationDrawer(),
       body: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -28,15 +30,17 @@ class _HomeScreenState extends State<HomeScreen> {
               MyLargeIconButton(
                 text: 'Spielen',
                 icon: Icons.play_arrow,
+                size: const Size(100, 50),
                 onPressed: () {
                   showAwesomeSnackbar(
                       context, "Spielen gedrückt", Colors.green, Icons.check, durationInSeconds: 1);
                 },
               ),
-              const SizedBox(height: 64),
+              const SizedBox(height: 128),
               MyLargeIconButton(
                 text: 'Einstellungen',
                 icon: Icons.settings,
+                size: const Size(100, 50),
                 onPressed: () {
                   showAwesomeSnackbar(
                       context, "Einstellungen gedrückt", Colors.green, Icons.check, durationInSeconds: 1);
