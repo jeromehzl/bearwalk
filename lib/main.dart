@@ -1,4 +1,5 @@
 import 'package:bearwalk/providers/drawer_provider.dart';
+import 'package:bearwalk/providers/game_provider.dart';
 import 'package:bearwalk/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => DrawerProvider()),
+        ChangeNotifierProvider(create: (_) => GameProvider()),
       ],
       child: MaterialApp(
         title: 'BearWalk',
