@@ -1,3 +1,6 @@
+import 'package:bearwalk/screens/game_prepare_screen.dart';
+import 'package:bearwalk/screens/game_screen.dart';
+import 'package:bearwalk/screens/settings_screen.dart';
 import 'package:bearwalk/utils/ColorHelper.dart';
 import 'package:bearwalk/widgets/my_snackbars.dart';
 import 'package:bearwalk/widgets/large_icon_button.dart';
@@ -32,8 +35,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 icon: Icons.play_arrow,
                 size: const Size(100, 50),
                 onPressed: () {
-                  showAwesomeSnackbar(
-                      context, "Spielen gedrückt", Colors.green, Icons.check, durationInSeconds: 1);
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => const GamePrepareScreen()));
                 },
               ),
               const SizedBox(height: 128),
@@ -42,8 +45,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 icon: Icons.settings,
                 size: const Size(100, 50),
                 onPressed: () {
-                  showAwesomeSnackbar(
-                      context, "Einstellungen gedrückt", Colors.green, Icons.check, durationInSeconds: 1);
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => const SettingsScreen()));
                 },
               ),
             ],

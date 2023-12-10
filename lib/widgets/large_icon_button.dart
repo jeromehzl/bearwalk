@@ -36,11 +36,11 @@ class MyLargeIconButton extends StatelessWidget {
         child: IntrinsicWidth( // Stellt sicher, dass der Button nicht breiter als nötig ist
           child: Column(
             mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
+            children: [
               Text(
                 text,
                 style: const TextStyle(
-                  fontSize: 16,
+                  fontSize: 18,
                 ),
               ),
               const SizedBox(height: 8),

@@ -1,10 +1,17 @@
 import 'package:bearwalk/providers/drawer_provider.dart';
+import 'package:bearwalk/providers/game_provider.dart';
 import 'package:bearwalk/screens/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp, // Nur Portrait-Modus erlauben
+  ]).then((_) {
+    runApp(const MyApp());
+  });
 }
 
 class MyApp extends StatelessWidget {
@@ -16,6 +23,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => DrawerProvider()),
+        ChangeNotifierProvider(create: (_) => GameProvider()),
       ],
       child: MaterialApp(
         title: 'BearWalk',
