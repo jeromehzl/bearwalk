@@ -1,10 +1,36 @@
 import 'package:bearwalk/widgets/large_icon_button.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:sensors_plus/sensors_plus.dart';
 
 import '../utils/ColorHelper.dart';
 
-class GameScreen extends StatelessWidget {
+class GameScreen extends StatefulWidget {
   const GameScreen({super.key});
+
+  @override
+  State<GameScreen> createState() => _GameScreenState();
+}
+
+class _GameScreenState extends State<GameScreen> {
+  GyroscopeEvent _gyroscopeEvent = GyroscopeEvent(0, 0, 0);
+
+  @override
+  void initState() {
+    super.initState();
+
+    gyroscopeEventStream(samplingPeriod: const Duration(milliseconds: 500))
+        .listen((GyroscopeEvent event) {
+      setState(() {
+        _gyroscopeEvent = event;
+      });
+
+      if (kDebugMode) {
+        print(_gyroscopeEvent);
+        print(event);
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,26 +59,26 @@ class GameScreen extends StatelessWidget {
                   ),
                 ),
                 alignment: Alignment.center,
-                child: const Column(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      '0.0 X',
-                      style: TextStyle(
+                      '${_gyroscopeEvent.x.toStringAsFixed(2)} X',
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 26,
                       ),
                     ),
                     Text(
-                      '0.0 Y',
-                      style: TextStyle(
+                      '${_gyroscopeEvent.y.toStringAsFixed(2)} Y',
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 26,
                       ),
                     ),
                     Text(
-                      '0.0 Z',
-                      style: TextStyle(
+                      '${_gyroscopeEvent.z.toStringAsFixed(2)} Z',
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 26,
                       ),
